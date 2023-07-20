@@ -14,17 +14,25 @@ interface LambdaStackProps extends StackProps {
 export class LambdaStack extends Stack {
   public readonly spacesLambdaIntegration: LambdaIntegration;
 
-  constructor(scope: Construct, id: string, prop: LambdaStackProps) {
-    super(scope, id, prop);
+  constructor(scope: Construct, id: string, props: LambdaStackProps) {
+    super(scope, id, props);
 
     const spacesLambda = new NodejsFunction(this, "SpacesLambda", {
       runtime: Runtime.NODEJS_18_X,
       handler: "handler",
       entry: join(__dirname, "..", "..", "services", "spaces", "handler.ts"),
       environment: {
-        TABLE_NAME: prop.spacesTable.tableName,
+        TABLE_NAME: props.spacesTable.tableName,
       },
     });
+
+    spacesLambda.addToRolePolicy(
+      new PolicyStatement({
+        effect: Effect.ALLOW,
+        resources: [props.spacesTable.tableArn],
+        actions: ["dynamodb:PutItem"],
+      })
+    );
 
     this.spacesLambdaIntegration = new LambdaIntegration(spacesLambda);
   }

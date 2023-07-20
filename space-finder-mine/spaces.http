@@ -6,6 +6,11 @@ GET {{url}}/spaces
 
 ###
 POST {{url}}/spaces
+Content-Type: application/json
+
+{
+    "location": "Beaverlodge"
+}
 
 
 # Authorization: {{token}}
