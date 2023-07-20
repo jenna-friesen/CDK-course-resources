@@ -1,8 +1,10 @@
-@url = https://bffht71vyf.execute-api.us-west-2.amazonaws.com/prod/
+@url = https://s9686lrwp6.execute-api.us-west-2.amazonaws.com/prod/
 
+
+###
 GET {{url}}/spaces
 
-
+###
 POST {{url}}/spaces
 
 
