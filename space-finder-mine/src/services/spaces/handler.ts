@@ -5,6 +5,7 @@ import {
   Context,
 } from "aws-lambda";
 import { postSpaces } from "./PostSpaces";
+import { getSpaces } from "./GetSpaces";
 
 const dynamoDbClient = new DynamoDBClient({});
 
@@ -12,16 +13,14 @@ async function handler(
   event: APIGatewayProxyEvent,
   context: Context
 ): Promise<APIGatewayProxyResult> {
-  let message: string;
-
   try {
     switch (event.httpMethod) {
       case "GET":
-        message = "Hello from GET";
-        break;
+        const getResponse = await getSpaces(event, dynamoDbClient);
+        return getResponse;
       case "POST":
-        const response = postSpaces(event, dynamoDbClient);
-        return response;
+        const postResponse = await postSpaces(event, dynamoDbClient);
+        return postResponse;
       default:
         break;
     }
@@ -32,13 +31,6 @@ async function handler(
       body: JSON.stringify(error),
     };
   }
-
-  const response: APIGatewayProxyResult = {
-    statusCode: 200,
-    body: JSON.stringify(message),
-  };
-
-  return response;
 }
 
 export { handler };
