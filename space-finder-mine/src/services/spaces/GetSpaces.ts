@@ -3,6 +3,7 @@ import {
   GetItemCommand,
   ScanCommand,
 } from "@aws-sdk/client-dynamodb";
+import { unmarshall } from "@aws-sdk/util-dynamodb";
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 
 export async function getSpaces(
@@ -21,7 +22,8 @@ export async function getSpaces(
         })
       );
       if (getItemResponse.Item) {
-        return { statusCode: 200, body: JSON.stringify(getItemResponse.Item) };
+        const unmarshalledItem = unmarshall(getItemResponse.Item);
+        return { statusCode: 200, body: JSON.stringify(unmarshalledItem) };
       } else {
         return {
           statusCode: 404,

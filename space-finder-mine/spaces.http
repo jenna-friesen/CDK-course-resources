@@ -2,7 +2,7 @@
 
 
 ###
-GET {{url}}/spaces
+GET {{url}}/spaces?id=3e6d61d5-38e1-436d-b84d-0632e9bb342f
 
 ###
 POST {{url}}/spaces
