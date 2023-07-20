@@ -5,7 +5,18 @@
 GET {{url}}/spaces?id=3e6d61d5-38e1-436d-b84d-0632e9bb342f
 
 ###
+GET {{url}}/spaces
+
+###
 POST {{url}}/spaces
+Content-Type: application/json
+
+{
+    "location": "klsfd"
+}
+
+###
+PUT {{url}}/spaces?id=3e6d61d5-38e1-436d-b84d-0632e9bb342f
 Content-Type: application/json
 
 {
