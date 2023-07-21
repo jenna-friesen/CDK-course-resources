@@ -16,7 +16,7 @@ export async function updateSpaces(
     const parsedBody = JSON.parse(event.body);
     const spaceId = event.queryStringParameters["id"];
     const requestBodyKey = Object.keys(parsedBody)[0];
-    const requestBodyValue = event.body[requestBodyKey];
+    const requestBodyValue = parsedBody[requestBodyKey];
 
     const updateResult = await dynamoDbClient.send(
       new UpdateItemCommand({
