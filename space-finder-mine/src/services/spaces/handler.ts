@@ -8,6 +8,7 @@ import { postSpaces } from "./PostSpaces";
 import { getSpaces } from "./GetSpaces";
 import { updateSpaces } from "./UpdateSpaces";
 import { MissingFieldError } from "../shared/Validator";
+import { deleteSpace } from "./DeleteSpaces";
 
 const dynamoDbClient = new DynamoDBClient({});
 
@@ -26,6 +27,9 @@ async function handler(
       case "PUT":
         const putResponse = await updateSpaces(event, dynamoDbClient);
         return putResponse;
+      case "DELETE":
+        const deleteResponse = await deleteSpace(event, dynamoDbClient);
+        return deleteResponse;
       default:
         break;
     }

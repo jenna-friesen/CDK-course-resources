@@ -1,11 +1,16 @@
 @url = https://s9686lrwp6.execute-api.us-west-2.amazonaws.com/prod/
-
+@token = eyJraWQiOiJkcURRQ2h5Q3BvUVNUd20zcW4zbU9pdEJXSUd0dm1FKzhzYnZBc0U1TE44PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJiZjNhNDI5ZS1mNTkyLTRiMGYtYjA4Ni01YzNmMzg4MjJlNmIiLCJjb2duaXRvOmdyb3VwcyI6WyJhZG1pbnMiXSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tXC91cy13ZXN0LTJfcklaRXNyQkFvIiwiY29nbml0bzp1c2VybmFtZSI6Implbm5hdGVzdHVzZXIiLCJvcmlnaW5fanRpIjoiNDg2NDZmZTktMDEzNS00NTI0LWJlZjEtNDJjNmE0OGUzMTdiIiwiYXVkIjoiNzVkb2UzNGdtaGJmM3RiajYxcWpsNjU5ZjgiLCJldmVudF9pZCI6IjgzMjY3ZGQ3LTNkNjYtNDQ3Mi1hOGJjLWU4OWIxMWI1YTYwNyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjg5OTYxMzMwLCJleHAiOjE2ODk5NjQ5MzAsImlhdCI6MTY4OTk2MTMzMCwianRpIjoiNTVkYzZiNjgtZmQ5NC00MmNiLTg5NzgtZGQwYmY5ZDZkMzU2In0.fbJRJlRVnH2xdFTVIszR3Q51Qmmhk3djXvh9joRh6yiPU0zk_SJlfhM5nb2GEsZQHskweIiqaj1MQbOtVDp62zYfRXxo5QWf7Xaw_UjBlmLkZyZrF36Wovu8KTEm4N4POIYchfCgnICymJrNbiel3VTOz91lI-eAszYLP-y3XC9t_7c5yKIap2p55d4tGOMStempg5G6iXx9SIrUqj5lRWgg9xPF4HRzF9evUQEAFLWLG0RvzK0csjBbDL3L66QCxUfY1BuFY-F-YT46e291JXFAAIzT2Ti5QybbTbQjMpSLDG7BnOZaiSFVaF25d5yE2v1uMJIjTmKUvZ8yygF7SQ
 
 ###
 GET {{url}}/spaces?id=3e6d61d5-38e1-436d-b84d-0632e9bb342f
 
 ###
 GET {{url}}/spaces
+Authorization: {{token}}
+
+###
+DELETE {{url}}/spaces?id=19e3057b-c45a-444f-b914-35eafae84ff6
+Authorization: {{token}}
 
 ###
 POST {{url}}/spaces
@@ -23,6 +28,8 @@ Content-Type: application/json
 {
     "location": "Beaverlodge 2"
 }
+
+#aws cognito-idp admin-set-user-password --user-pool-id us-west-2_rIZEsrBAo --username jennatestuser --password "2]]jXv*7}Z5U]-;" --permanent
 
 
 # Authorization: {{token}}
