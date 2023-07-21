@@ -12,7 +12,8 @@ POST {{url}}/spaces
 Content-Type: application/json
 
 {
-    "location": "klsfd"
+    "location": "klsfd",
+    "name": "best location"
 }
 
 ###
@@ -20,7 +21,7 @@ PUT {{url}}/spaces?id=3e6d61d5-38e1-436d-b84d-0632e9bb342f
 Content-Type: application/json
 
 {
-    "location": "Beaverlodge"
+    "location": "Beaverlodge 2"
 }
 
 
